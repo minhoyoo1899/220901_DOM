@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--
+    <style>
+    #root {
+      width: 100px;
+      height: 100px;
+      background-color: cadetblue;
+    }
+  </style>
+-->
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module">
+    const root = document.getElementById('root');
+    // console.table(root);   
+
+    root.style.width = "100px";
+    root.style.height = "100px";
+    root.style.backgroundColor = "cadetblue";
+    
+    // 스타일 태그에 입력된 갑은 콘솔에 안나옴(문자열 없음)
+    // 문서를 읽는 과정에서 html에서 stytle태그의 내용을 합치는 과정(attachment)
+    // css가 적재가 안되고 있음을 의미한다.    
+    // 스크립트는 css보다 상위 레벨에서 접근하는 방식이다.    
+    // 동적으로 스타일링하는 내용의 핵심은 바로 여기에 있다. (parsing 하는 과정에서 내용을 합치기전에 이미 스크립트는 읽히고 있다.)
+    // IE에서는 attachEvent라고 불리었다.
+    // 바닐라에서는 addeventListener
+
+    console.dir(root);
+    console.dir(root.style);
+
+    const dom = [];
+    // dom.push(`<div id="test-1">피카츄</div>`);
+    // dom.push(`<div id="test-2">라이츄</div>`);
+    // dom.push(`<div id="test-3">파이리</div>`);
+    // dom.push(`<div id="test-4">꼬부기</div>`);
+    // dom.push(`<div id="test-5">버터풀</div>`);
+    // dom.push(`<div id="test-6">야도란</div>`);
+    // dom.push(`<div id="test-7">피존투</div>`);
+    // dom.push(`<div id="test-8">또가스</div>`);
+    // dom.push(`<div id="test-9">레넥톤</div>`);
+    console.log(dom);
+
+    //root.innerHTML = dom[0];
+    //root.innerHTML = dom.join();
+    // for (let i=0; i<10; i++) {
+    //   dom.push(`<div id="test-${i+1}">${i+1}번 div</div>`);
+    //   //root.innerHTML = dom[i];
+    // }
+    // root.innerHTML = dom.join();
+
+    function test(count, tagName, attri, attrivalue, textNode) {
+      for(let i=0; i<count; i++) {
+        dom.push(`<${tagName}><${attri}= "${attrivalue}-${i+1}">${textNode}</${tagName}>`)
+      }
+    }
+
+    test(10, "div", 10, 10,"조인");
+    console.log(dom);
+    root.innerHTML = dom.join();
+
+
+    // createElement와 appendChild를 쓰지 않고도 할 수있다.
+
+
+    // function alpha(tagName, textContent) {
+    //   return `<${tagName}> ${textContent} </${tagName}>`;
+    // }
+
+    //console.log(alpha());
+
+    // let test = alpha("section", "hello") + alpha("article", "article") + alpha("nav", "goodmorning");
+
+
+
+    //root.innerHTML = alpha("div", "alpha");
+
+    // root.innerHTML = test; 
+    // 리액트 스타일의 컴포넌트
+    // 메서드의 매개변수를 배열화 해서 넣는다면 기계적으로 엄청나게 많이 만들 수 있다.
+  </script>
+</body>
+</html>
